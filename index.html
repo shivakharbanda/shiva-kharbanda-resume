@@ -1,548 +1,625 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiva Kharbanda - Resume</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        /* ---------- Screen (normal view) ---------- */
-        :root {
-            /* Font sizes (screen) */
-            --fs-body: 9.5pt;
-            --fs-contact: 6.6pt;
-            --fs-name: 16.4pt;
-            --fs-section: 9.2pt;
-            --fs-item-title: 9.2pt;
-            --fs-company: 8.6pt;
-            --fs-date: 8.6pt;
-            --fs-project-name: 9.4pt;
-            --fs-resp: 7.9pt;
-            --fs-tech: 7.9pt;
+  <title>Shiva Kharbanda – Software Engineer</title>
+  <meta name="description" content="Portfolio of Shiva Kharbanda, a software engineer focused on data platforms, applied AI, and production-grade web apps." />
 
-            /* Spacing (screen) */
-            --sp-xxs: 1.6pt;
-            --sp-xs: 3.2pt;
-            --sp-s: 5pt;
-            --sp-m: 7pt;
-            --sp-l: 8.5pt;
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shiva Kharbanda – Software Engineer" />
+  <meta property="og:description" content="Data platforms • Applied AI • Web apps" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://picsum.photos/seed/shiva-kharbanda/1200/630" />
 
-            --ink: #333;
-            --ink-subtle: #555;
-            --ink-muted: #666;
-            --brand: #2c3e50;
-            --brand-soft: #34495e;
-            --rule: #bdc3c7;
-        }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shiva Kharbanda – Software Engineer" />
+  <meta name="twitter:description" content="Data platforms • Applied AI • Web apps" />
+  <meta name="twitter:image" content="https://picsum.photos/seed/shiva-kharbanda/1200/630" />
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.22;
-            color: var(--ink);
-            max-width: 8in;
-            margin: 0 auto;
-            padding: 0.2in;
-            background: #fff;
-            font-size: var(--fs-body);
-        }
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
-        /* Keep things compact but readable on screen */
-        .header {
-            text-align: center;
-            margin-bottom: var(--sp-m);
-            border-bottom: 1.4px solid var(--brand);
-            padding-bottom: var(--sp-xs);
-        }
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 
-        .name {
-            font-size: var(--fs-name);
-            font-weight: 700;
-            color: var(--brand);
-            letter-spacing: .2px;
-            margin-bottom: var(--sp-xs);
-        }
+  <!-- Warm parchment theme -->
+  <style>
+    /* CSS color tokens (HSL tuples) */
+    :root{
+      /* Base */
+      --background: 36 56% 98%;   /* #FDFBF8 */
+      --foreground: 0 0% 29%;     /* #4A4A4A */
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 6px;
-            font-size: var(--fs-contact);
-            color: var(--ink-subtle)
-        }
+      /* Muted / secondary text & subtle surfaces */
+      --muted: 35 29% 95%;        /* #F6F1EA approx */
+      --muted-foreground: 0 0% 45%;
 
-        .contact-info span {
-            white-space: nowrap
-        }
+      /* Cards / popovers */
+      --card: 0 0% 100%;
+      --card-foreground: 0 0% 29%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 0 0% 29%;
 
-        .contact-info a {
-            color: var(--brand);
-            text-decoration: none
-        }
+      /* Brand */
+      --primary: 29 44% 56%;      /* #C08D5D */
+      --primary-foreground: 0 0% 100%;
+      --secondary: 35 29% 88%;    /* #EAE3D9 */
+      --secondary-foreground: 0 0% 29%;
+      --accent: 28 36% 49%;       /* #A97A50 */
+      --accent-foreground: 0 0% 100%;
 
-        .section {
-            margin-bottom: var(--sp-m)
-        }
+      /* Borders / inputs / focus */
+      --border: 32 21% 83%;       /* #DCD3C9 */
+      --input: 32 21% 83%;
+      --ring: 29 44% 56%;
 
-        .section-title {
-            font-size: var(--fs-section);
-            font-weight: 700;
-            color: var(--brand);
-            border-bottom: 1px solid var(--rule);
-            padding-bottom: var(--sp-xxs);
-            margin-bottom: var(--sp-xs);
-            text-transform: uppercase;
-            letter-spacing: .35px
-        }
+      --radius: 0.75rem;
+    }
 
-        .experience-item,
-        .education-item,
-        .project-item {
-            margin-bottom: var(--sp-s);
-            page-break-inside: avoid
-        }
+    /* Base theme mapping */
+    html, body{
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: var(--sp-xxs);
-            gap: var(--sp-s)
-        }
+    /* Reusable utilities (no Tailwind build required) */
+    .brand-color{ color: hsl(var(--primary)); }
+    .muted{ color: hsl(var(--muted-foreground)); }
 
-        .item-title {
-            font-weight: 700;
-            font-size: var(--fs-item-title);
-            color: var(--brand)
-        }
+    .card{
+      background: hsl(var(--card));
+      color: hsl(var(--card-foreground));
+      border: 1px solid hsl(var(--border));
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
 
-        .company,
-        .institution {
-            font-style: italic;
-            color: var(--ink-subtle);
-            font-size: var(--fs-company)
-        }
+    .chip{
+      background: hsl(var(--secondary));
+      color: hsl(var(--secondary-foreground));
+      border: 1px solid hsl(var(--border));
+    }
 
-        .date {
-            font-size: var(--fs-date);
-            color: var(--ink-muted);
-            white-space: nowrap
-        }
+    .btn{
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: .5rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      font-weight: 700; letter-spacing: .01em;
+      transition: background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .02s ease;
+      cursor: pointer;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn:focus-visible{
+      outline: 3px solid hsl(var(--ring));
+      outline-offset: 2px;
+    }
+    .btn-primary{
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      box-shadow: 0 2px 8px hsl(var(--primary) / .22);
+    }
+    .btn-primary:hover{ background: hsl(var(--accent)); }
+    .btn-secondary{
+      background: hsl(var(--secondary));
+      color: hsl(var(--secondary-foreground));
+      border-color: hsl(var(--border));
+    }
+    .btn-secondary:hover{
+      background: hsl(var(--secondary));
+      border-color: hsl(var(--ring));
+      box-shadow: 0 1px 6px rgba(0,0,0,.05);
+    }
 
-        .project-section {
-            margin-top: var(--sp-xxs);
-            margin-left: 10px
-        }
+    /* Inputs */
+    input[type="text"],
+    input[type="email"],
+    textarea{
+      background: hsl(var(--muted));
+      border: 1px solid hsl(var(--input));
+      color: hsl(var(--foreground));
+      border-radius: .625rem;
+      padding: .625rem .75rem;
+      width: 100%;
+    }
+    input::placeholder, textarea::placeholder{ color: hsl(var(--muted-foreground) / .75); }
+    input:focus-visible, textarea:focus-visible{
+      outline: 3px solid hsl(var(--ring));
+      outline-offset: 2px;
+      border-color: hsl(var(--ring));
+      background: hsl(var(--card));
+    }
 
-        .project-name {
-            font-weight: 700;
-            color: var(--brand-soft);
-            font-size: var(--fs-project-name);
-            margin-bottom: var(--sp-xxs)
-        }
+    /* Nav links */
+    .nav-link{
+      color: hsl(var(--muted-foreground));
+      position: relative;
+      padding: .25rem .25rem;
+      transition: color .18s ease;
+    }
+    .nav-link:hover{ color: hsl(var(--primary)); }
+    .nav-link[aria-current="true"]{
+      color: hsl(var(--primary));
+      font-weight: 700;
+    }
 
-        .responsibilities {
-            margin-left: 14px;
-            margin-top: var(--sp-xxs)
-        }
+    /* Header on scroll */
+    #site-header.header--scrolled{
+      background: hsl(var(--background) / 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid hsl(var(--border));
+    }
 
-        .responsibilities li {
-            margin-bottom: .4pt;
-            line-height: 1.18;
-            font-size: var(--fs-resp)
-        }
+    /* Avatar ring (theme-colored) */
+    .avatar{
+      border-radius: 9999px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      box-shadow: 0 0 0 4px hsl(var(--secondary));
+    }
 
-        .project-tech {
-            font-style: italic;
-            color: var(--ink-muted);
-            font-size: var(--fs-tech)
-        }
+    /* Mobile menu links */
+    .mobile-link{
+      border-radius: .625rem;
+      padding: .5rem .75rem;
+      color: hsl(var(--foreground));
+    }
+    .mobile-link:hover{
+      background: hsl(var(--secondary));
+    }
+  </style>
 
-        .project-desc {
-            font-size: var(--fs-tech);
-            color: var(--ink-subtle);
-            margin-bottom: var(--sp-xxs)
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 132px 1fr;
-            gap: 6px;
-            align-items: start
-        }
-
-        .skill-category {
-            font-weight: 700;
-            text-align: left;
-            font-size: var(--fs-tech);
-            color: var(--brand)
-        }
-
-        .skill-list {
-            color: var(--ink-subtle);
-            font-size: var(--fs-tech);
-            line-height: 1.4
-        }
-
-        /* ---------- Print (use leftover space, no second page) ---------- */
-        @page {
-            size: A4;
-            /* force A4; remove if you prefer Letter */
-            margin: 0.35in;
-            /* tighter page margins to reclaim space */
-        }
-
-        @media print {
-
-            /* Let content use full printable area */
-            html,
-            body {
-                width: auto;
-                max-width: none
-            }
-
-            body {
-                padding: 0.1in;
-                /* inner padding; page margins handle outer */
-                line-height: 1;
-                font-size: 8pt;
-                /* scale body text up for print */
-            }
-
-            /* Relax "avoid" so the last section can fill page 1 instead of jumping */
-            .section,
-            .experience-item,
-            .education-item,
-            .project-item,
-            .skills-grid {
-                break-inside: auto;
-                page-break-inside: auto;
-            }
-
-            .section-title {
-                break-before: auto
-            }
-
-            /* Scale headings/lists up to use whitespace without spilling */
-            .name {
-                font-size: 17.2pt
-            }
-
-            .contact-info {
-                font-size: 7pt;
-                gap: 5px
-            }
-
-            .section-title {
-                font-size: 9pt
-            }
-
-            .item-title {
-                font-size: 8.8pt
-            }
-
-            .company,
-            .institution,
-            .date {
-                font-size: 8pt
-            }
-
-            .project-name {
-                font-size: 8.8pt
-            }
-
-            .responsibilities li {
-                font-size: 8.6pt;
-                line-height: 1.22
-            }
-
-            .project-tech,
-            .project-desc {
-                font-size: 8.5pt
-            }
-
-            /* Skills: keep dense but legible; widen value column a bit */
-            .skills-grid {
-                gap: 5px;
-                grid-template-columns: 128px 1fr
-            }
-
-            .skill-category,
-            .skill-list {
-                font-size: 9.5pt;
-                line-height: 1.4
-            }
-
-            /* Tighten vertical rhythm slightly to fine-tune height */
-            .section {
-                margin-bottom: 8pt
-            }
-
-            .header {
-                margin-bottom: 8pt;
-                padding-bottom: 6pt
-            }
-
-            body {
-                font-size: 9.6pt;
-            }
-
-            .responsibilities li {
-                font-size: 9.2pt;
-                line-height: 1.22;
-            }
-
-            .section-title {
-                font-size: 9.6pt;
-            }
-
-            .item-title,
-            .project-name {
-                font-size: 9.4pt;
-            }
-
-
-
-        }
-    </style>
-
-
-
-
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Shiva Kharbanda",
+    "jobTitle":"Software Engineer",
+    "email":"mailto:shivakharbanda1311@gmail.com",
+    "telephone":"+91 8447903744",
+    "sameAs":[
+      "https://github.com/shivakharbanda",
+      "https://www.linkedin.com/in/shiva-kharbanda"
+    ]
+  }
+  </script>
 </head>
-
-<body>
-    <header class="header">
-        <h1 class="name">Shiva Kharbanda</h1>
-        <div class="contact-info">
-            Delhi, India | <a href="mailto:shivakharbanda1311@gmail.com">shivakharbanda1311@gmail.com</a> | +91 8447903744 |
-            <a href="https://in.linkedin.com/in/shiva-kharbanda">linkedin.com/in/shiva-kharbanda</a> |
-            <a href="https://github.com/shivakharbanda/">github.com/shivakharbanda</a>
-        </div>
-    </header>
-    <section class="section">
-        <h2 class="section-title">Summary</h2>
-        <p class="summary">
-            Seasoned software engineer with 3 years of experience building
-            <b>production data pipelines</b>, <b>low-latency APIs</b>, and <b>enterprise data apps</b>
-            using <b>Databricks, FastAPI, Django, and modern cloud tooling</b>.
-            Focused on data platforms and applied AI, delivering scalable, high-impact solutions in production.
-        </p>
-    </section>
-
-
-    <section class="section">
-        <h2 class="section-title">Professional Experience</h2>
-
-        <div class="experience-item">
-            <div class="item-header">
-                <div>
-                    <div class="item-title">Software Development Engineer</div>
-                    <div class="company">Scikiq</div>
-                </div>
-                <div class="date">Nov 2023 &ndash; Present</div>
-            </div>
-
-            <div class="project-section">
-                <div class="project-name">GA Call Transcripts Pipeline</div>
-                <ul class="responsibilities">
-                    <li>
-                        Automated processing of <b>6,000–8,000 call transcripts/day</b> with Databricks + Azure Data
-                        Factory, enabling intent detection, sentiment analysis, QC, and complaint checks.
-                    </li>
-                    <li>
-                        Scaled NLP inference via <b>Azure OpenAI Batch API</b> with <b>Pydantic-based validation</b> to
-                        handle high-volume workloads reliably with consistent throughput.
-                    </li>
-                    <li>
-                        Orchestrated pipelines with <b>Automic</b> and coordinated stakeholder requirements for seamless
-                        production rollout.
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="project-section">
-                <div class="project-name">Master Data Management Tool</div>
-                <ul class="responsibilities">
-                    <li>Delivered a Django/DRF web app with <b>role-based access control</b>, enabling secure,
-                        multi-team usage.</li>
-                    <li>Built <b>approval workflows</b>, <b>dynamic item tracking</b>, and <b>ingestion pipelines</b>
-                        validating thousands of records with full audit trails.</li>
-                    <li>Launched <b>SLA/TAT dashboards</b> to surface bottlenecks and cycle times, helping ops leads
-                        reduce delays and improve throughput.</li>
-                </ul>
-            </div>
-
-
-            <div class="project-section">
-                <div class="project-name">Fare Rules Extraction</div>
-                <ul class="responsibilities">
-                    <li>
-                        Built a FastAPI service powered by an <b>open-source LLM deployed with vLLM</b> to ingest and
-                        validate airline fare rules from XML,
-                        cutting end-to-end parse time from <b>2–4 minutes to ~13 seconds (~95% faster)</b>
-                    </li>
-                    <li>
-                        Used async I/O to parallelize category processing; added retries and dead-letter handling for
-                        bad inputs
-                    </li>
-                    <li>
-                        Designed MongoDB schemas and Django dashboards for <b>run health, error drill-downs, and rule
-                            coverage</b>
-                    </li>
-                    <li>
-                        Onboarded <b>50+ airlines</b> (~<b>90% market coverage</b>) and shipped to production with
-                        monitoring and alerts
-                    </li>
-                </ul>
-            </div>
-
-            <div class="project-section">
-                <div class="project-name">Scikiq Platform (AutoML Module)</div>
-                <ul class="responsibilities">
-                    <li>Owned the front end for an AutoML module: multi-sheet experiments, dataset/version selection,
-                        and run tracking</li>
-                    <li>Partnered with stakeholders to design workflows and acceptance criteria; wrote specs and UI
-                        prototypes</li>
-                    <li>Fixed <b>200+ bugs</b> and UX issues, reducing support tickets and improving session
-                        stability</li>
-                </ul>
-            </div>
-
-
-        </div>
-
-        <div class="experience-item">
-            <div class="item-header">
-                <div>
-                    <div class="item-title">Data Engineer</div>
-                    <div class="company">Daaslabs</div>
-                </div>
-                <div class="date">Nov 2022 &ndash; Oct 2023</div>
-            </div>
-
-            <div class="project-section">
-                <div class="project-name">Assessment Tool</div>
-                <ul class="responsibilities">
-                    <li>Built an enterprise data-maturity assessment app (Django, DRF, HTML/CSS/JS) with authentication
-                        and admin tooling</li>
-                    <li>Created an adaptive questionnaire engine that calibrates difficulty from prior answers to
-                        increase scoring fidelity</li>
-                </ul>
-            </div>
-
-
-            <div class="project-section">
-                <div class="project-name">ONDC (Open Network for Digital Commerce)</div>
-                <ul class="responsibilities">
-                    <li>Led a team of three to develop a Selenium-based collector for <b>50+ vendor dashboards</b>,
-                        loading results into PostgreSQL</li>
-                    <li>Productionized with Jenkins pipelines and schedules; added checkpointing and idempotent loads
-                        for consistency</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Skills Section -->
-    <section class="section">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">Languages:</div>
-            <div class="skill-list">Python, JavaScript, Go (intro)</div>
-
-            <div class="skill-category">Frameworks & Libraries:</div>
-            <div class="skill-list">
-                Django, Django REST Framework, FastAPI, Flask, React, Next.js, LangChain, LangGraph, VLLM,
-                PydanticAI
-            </div>
-
-            <div class="skill-category">Data & Infrastructure:</div>
-            <div class="skill-list">
-                Databricks, Azure Data Factory, Azure Data Lake, Amazon S3, ETL/ELT, SageMaker
-            </div>
-
-            <div class="skill-category">Tools & Platforms:</div>
-            <div class="skill-list">
-                GitHub, Azure DevOps, Docker, Docker Compose, Jenkins, PostgreSQL, MySQL, MSSQL Server, MongoDB
-            </div>
-        </div>
-    </section>
-
-    <div>
-        <div>
-            <section class="section">
-                <h2 class="section-title">Personal Projects</h2>
-
-                <div class="project-item">
-                    <div class="project-name">
-                        AnalytiQ
-                        <a href="https://github.com/Data-Quotient/analytiq"
-                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[GitHub]</a>
-                    </div>
-                    <div class="project-desc">
-                        Streamlit app for data quality, preprocessing, and AutoML with GenAI assist (Streamlit, AutoML,
-                        Generative AI).
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-name">
-                        Prompt ACE
-                        <a href="https://github.com/shivakharbanda/prompt-ace"
-                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[GitHub]</a>
-                    </div>
-                    <div class="project-desc">
-                        Chrome extension for prompt versioning with secure API key storage and AI enhancements (Manifest
-                        V3, JavaScript, LangChain.js, Google Gemini).
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-name">
-                        sfinance &amp; SFinance MCP Server
-                        <a href="https://pypi.org/project/sfinance/"
-                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[PyPI]</a>
-                        <a href="https://sfinance.readthedocs.io/en/latest/"
-                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[Docs]</a>
-                        <a href="https://github.com/shivakharbanda/sfinance"
-                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[GitHub]</a>
-                        <a href="https://github.com/shivakharbanda/sfinance-mcp-server"
-                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[MCP&nbsp;GitHub]</a>
-                    </div>
-                    <div class="project-desc">
-                        Published Python package on PyPI for extracting financial tables into pandas DataFrames, fully
-                        documented on ReadTheDocs, plus a separate MCP server exposing Indian stock-market data
-                        programmatically (Selenium, BeautifulSoup, Pandas, Model Context Protocol).
-                    </div>
-
-                </div>
-
-
-            </section>
-        </div>
-
-
-        <!-- Education moved here, after Personal Projects -->
-        <section class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">BTech in Computer Science and Engineering – MDU University</div>
-                    </div>
-                    <div class="date">2018 – 2022</div>
-                </div>
-            </div>
-        </section>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 z-50 w-full transition-all">
+    <div class="container mx-auto px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#home" class="flex items-center gap-2 font-extrabold tracking-tight">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 brand-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+          <span>Shiva's Portfolio</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#experience" class="nav-link text-sm font-medium" data-nav>Experience</a>
+          <a href="#projects" class="nav-link text-sm font-medium" data-nav>Projects</a>
+          <a href="#skills" class="nav-link text-sm font-medium" data-nav>Skills</a>
+          <a href="#contact" class="nav-link text-sm font-medium" data-nav>Contact</a>
+        </nav>
+        <button id="menuButton" class="md:hidden btn btn-secondary w-10 h-10 p-0" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
     </div>
-</body>
 
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden">
+      <div class="container mx-auto px-4 pb-4">
+        <div class="card rounded-xl p-2">
+          <a href="#experience" class="block mobile-link" data-nav>Experience</a>
+          <a href="#projects" class="block mobile-link" data-nav>Projects</a>
+          <a href="#skills" class="block mobile-link" data-nav>Skills</a>
+          <a href="#contact" class="block mobile-link" data-nav>Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="pt-24 lg:pt-28">
+    <!-- Hero -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+          <div class="space-y-6">
+            <div class="space-y-3">
+              <h1 class="text-4xl sm:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight">Shiva Kharbanda</h1>
+              <p class="text-xl muted">Software Engineer</p>
+              <p class="muted max-w-[60ch] text-lg">
+                Seasoned software engineer with 3 years of experience building production data pipelines, low-latency APIs, and enterprise data apps using Databricks, FastAPI, Django, and modern cloud tooling. Focused on data platforms and applied AI, delivering scalable, high-impact solutions in production.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#projects" class="btn btn-primary">View Work
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <a href="Shiva Kharbanda - Resume.pdf" download class="btn btn-secondary">Download Resume
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <img
+              src="https://picsum.photos/seed/shiva-kharbanda/400/400"
+              width="400" height="400"
+              alt="Professional headshot of Shiva Kharbanda"
+              decoding="async" loading="eager"
+              class="avatar"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Work Experience</h2>
+          <p class="muted text-lg">A timeline of my professional journey.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto mt-12 space-y-16">
+          <!-- Scikiq -->
+          <div class="relative pl-8 border-l" style="border-color: hsl(var(--border));">
+            <div class="absolute -left-[9px] top-1 h-4 w-4 rounded-full" style="background:hsl(var(--primary)); box-shadow:0 0 0 4px hsl(var(--secondary));"></div>
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-xl font-bold">Software Development Engineer</h3>
+                <p class="muted font-medium">Scikiq</p>
+                <p class="muted text-sm">Nov 2023 – Present</p>
+              </div>
+
+              <div class="grid gap-6">
+                <div class="card rounded-xl p-5">
+                  <h4 class="font-semibold">GA Call Transcripts Pipeline</h4>
+                  <ul class="list-disc pl-5 mt-2 space-y-2 muted">
+                    <li>Automated processing of 6,000–8,000 call transcripts/day with Databricks + Azure Data Factory, enabling intent detection, sentiment analysis, QC, and complaint checks.</li>
+                    <li>Scaled NLP inference via Azure OpenAI Batch API with Pydantic-based validation to handle high-volume workloads reliably with consistent throughput.</li>
+                    <li>Orchestrated pipelines with Automic and coordinated stakeholder requirements for seamless production rollout.</li>
+                  </ul>
+                </div>
+
+                <div class="card rounded-xl p-5">
+                  <h4 class="font-semibold">Master Data Management Tool</h4>
+                  <ul class="list-disc pl-5 mt-2 space-y-2 muted">
+                    <li>Delivered a Django/DRF web app with role-based access control, enabling secure, multi-team usage.</li>
+                    <li>Built approval workflows, dynamic item tracking, and ingestion pipelines validating thousands of records with full audit trails.</li>
+                    <li>Launched SLA/TAT dashboards to surface bottlenecks and cycle times, helping ops leads reduce delays and improve throughput.</li>
+                  </ul>
+                </div>
+
+                <div class="card rounded-xl p-5">
+                  <h4 class="font-semibold">Fare Rules Extraction</h4>
+                  <ul class="list-disc pl-5 mt-2 space-y-2 muted">
+                    <li>Built a FastAPI service powered by an open-source LLM deployed with vLLM to ingest and validate airline fare rules from XML, cutting end-to-end parse time from 2–4 minutes to ~13 seconds.</li>
+                    <li>Used async I/O to parallelize category processing; added retries and dead-letter handling for bad inputs.</li>
+                    <li>Designed MongoDB schemas and Django dashboards for run health, error drill-downs, and rule coverage; onboarded 50+ airlines with monitoring and alerts.</li>
+                  </ul>
+                </div>
+
+                <div class="card rounded-xl p-5">
+                  <h4 class="font-semibold">Scikiq Platform (AutoML Module)</h4>
+                  <ul class="list-disc pl-5 mt-2 space-y-2 muted">
+                    <li>Owned the front end for an AutoML module: multi-sheet experiments, dataset/version selection, and run tracking.</li>
+                    <li>Partnered with stakeholders to design workflows and acceptance criteria; wrote specs and UI prototypes.</li>
+                    <li>Fixed 200+ bugs and UX issues, reducing support tickets and improving session stability.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daaslabs -->
+          <div class="relative pl-8 border-l" style="border-color: hsl(var(--border));">
+            <div class="absolute -left-[9px] top-1 h-4 w-4 rounded-full" style="background:hsl(var(--foreground)); box-shadow:0 0 0 4px hsl(var(--secondary));"></div>
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-xl font-bold">Data Engineer</h3>
+                <p class="muted font-medium">Daaslabs</p>
+                <p class="muted text-sm">Nov 2022 – Oct 2023</p>
+              </div>
+
+              <div class="grid gap-6">
+                <div class="card rounded-xl p-5">
+                  <h4 class="font-semibold">Assessment Tool</h4>
+                  <ul class="list-disc pl-5 mt-2 space-y-2 muted">
+                    <li>Built an enterprise data-maturity assessment app (Django, DRF, HTML/CSS/JS) with authentication and admin tooling.</li>
+                    <li>Created an adaptive questionnaire engine that calibrates difficulty from prior answers to increase scoring fidelity.</li>
+                  </ul>
+                </div>
+
+                <div class="card rounded-xl p-5">
+                  <h4 class="font-semibold">ONDC (Open Network for Digital Commerce)</h4>
+                  <ul class="list-disc pl-5 mt-2 space-y-2 muted">
+                    <li>Led a team of three to develop a Selenium-based collector for 50+ vendor dashboards, loading results into PostgreSQL.</li>
+                    <li>Productionized with Jenkins pipelines and schedules; added checkpointing and idempotent loads for consistency.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Personal Projects</h2>
+          <p class="muted text-lg">Here are some of the projects I've worked on.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
+          <!-- AnalytiQ -->
+          <article class="card rounded-xl p-6 flex flex-col">
+            <h3 class="text-2xl font-semibold">AnalytiQ</h3>
+            <p class="muted mt-2">Streamlit app for data quality, preprocessing, and AutoML with GenAI assist.</p>
+            <div class="mt-auto flex gap-3 pt-4">
+              <a href="#" target="_blank" class="btn btn-secondary">Live Demo</a>
+              <a href="https://github.com/shivakharbanda/AnalytiQ" target="_blank" class="btn btn-primary">GitHub</a>
+            </div>
+          </article>
+
+          <!-- Prompt ACE -->
+          <article class="card rounded-xl p-6 flex flex-col">
+            <h3 class="text-2xl font-semibold">Prompt ACE</h3>
+            <p class="muted mt-2">Chrome extension for prompt versioning with secure API key storage and AI enhancements.</p>
+            <div class="mt-auto flex gap-3 pt-4">
+              <a href="#" target="_blank" class="btn btn-secondary">Live Demo</a>
+              <a href="https://github.com/shivakharbanda/Prompt-ACE" target="_blank" class="btn btn-primary">GitHub</a>
+            </div>
+          </article>
+
+          <!-- sfinance -->
+          <article class="card rounded-xl p-6 flex flex-col">
+            <h3 class="text-2xl font-semibold">sfinance</h3>
+            <p class="muted mt-2">Python package on PyPI for extracting financial tables, with a separate MCP server for Indian stock-market data.</p>
+            <div class="mt-auto flex gap-3 pt-4">
+              <a href="https://pypi.org/project/sfinance/" target="_blank" class="btn btn-secondary">PyPI</a>
+              <a href="https://github.com/shivakharbanda/sfinance" target="_blank" class="btn btn-primary">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Technical Skills</h2>
+          <p class="muted text-lg">A breakdown of my technical expertise.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
+          <!-- Languages -->
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Languages</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="chip px-3 py-1 rounded-full text-base">Python</span>
+              <span class="chip px-3 py-1 rounded-full text-base">JavaScript</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Go (intro)</span>
+            </div>
+          </div>
+
+          <!-- Frameworks -->
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Frameworks & Libraries</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="chip px-3 py-1 rounded-full text-base">Django</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Django REST Framework</span>
+              <span class="chip px-3 py-1 rounded-full text-base">FastAPI</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Flask</span>
+              <span class="chip px-3 py-1 rounded-full text-base">React</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Next.js</span>
+              <span class="chip px-3 py-1 rounded-full text-base">LangChain</span>
+              <span class="chip px-3 py-1 rounded-full text-base">LangGraph</span>
+              <span class="chip px-3 py-1 rounded-full text-base">vLLM</span>
+              <span class="chip px-3 py-1 rounded-full text-base">PydanticAI</span>
+            </div>
+          </div>
+
+          <!-- Data & Infra -->
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Data & Infrastructure</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="chip px-3 py-1 rounded-full text-base">Databricks</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Azure Data Factory</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Azure Data Lake</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Amazon S3</span>
+              <span class="chip px-3 py-1 rounded-full text-base">ETL/ELT</span>
+              <span class="chip px-3 py-1 rounded-full text-base">SageMaker</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Tools & Platforms</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="chip px-3 py-1 rounded-full text-base">GitHub</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Azure DevOps</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Docker</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Docker Compose</span>
+              <span class="chip px-3 py-1 rounded-full text-base">Jenkins</span>
+              <span class="chip px-3 py-1 rounded-full text-base">PostgreSQL</span>
+              <span class="chip px-3 py-1 rounded-full text-base">MySQL</span>
+              <span class="chip px-3 py-1 rounded-full text-base">MSSQL Server</span>
+              <span class="chip px-3 py-1 rounded-full text-base">MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center space-y-3 max-w-3xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Get in Touch</h2>
+          <p class="muted text-lg">Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="max-w-2xl mx-auto mt-10">
+          <form id="contactForm" class="card rounded-xl p-6 space-y-6" novalidate>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="text-sm font-medium">Name</label>
+                <input id="name" name="name" type="text" required placeholder="Your Name" />
+              </div>
+              <div>
+                <label for="email" class="text-sm font-medium">Email</label>
+                <input id="email" name="email" type="email" required placeholder="your.email@example.com" />
+              </div>
+            </div>
+            <div>
+              <label for="message" class="text-sm font-medium">Message</label>
+              <textarea id="message" name="message" rows="6" required placeholder="Tell me a little bit about your project..."></textarea>
+            </div>
+            <div class="flex justify-center">
+              <button type="submit" class="btn btn-primary">Send Message
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-9.5 9.5"/><path d="M22 2 15 22l-4-8-8-4 19-8z"/></svg>
+              </button>
+            </div>
+            <p class="text-xs muted">Set your Formspree endpoint in the script below if you want submissions delivered to your inbox.</p>
+            <p id="formStatus" class="text-sm"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-8" style="border-top: 1px solid hsl(var(--border));">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4 text-sm muted">
+          <a href="mailto:shivakharbanda1311@gmail.com" class="inline-flex items-center gap-2 hover:text-[hsl(var(--primary))]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>shivakharbanda1311@gmail.com</span>
+          </a>
+          <span class="inline-flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 8447903744</span>
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a href="https://github.com/shivakharbanda" target="_blank" aria-label="GitHub" class="btn btn-secondary w-10 h-10 p-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.52.66-.79 1.73-.79 2.5V22"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/shiva-kharbanda" target="_blank" aria-label="LinkedIn" class="btn btn-secondary w-10 h-10 p-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <p class="container mx-auto px-4 pt-6 text-center text-sm muted">© <span id="year"></span> Shiva's Portfolio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Header background on scroll
+    const header = document.getElementById('site-header');
+    const setHeaderStyle = () => {
+      if (window.scrollY > 8) {
+        header.classList.add('header--scrolled');
+      } else {
+        header.classList.remove('header--scrolled');
+      }
+    };
+    setHeaderStyle();
+    window.addEventListener('scroll', setHeaderStyle, { passive: true });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a[data-nav]').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded','false');
+      });
+    });
+
+    // Scroll-spy active nav links
+    const navLinks = document.querySelectorAll('a[data-nav]');
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const linkFor = id => [...navLinks].find(a => a.getAttribute('href') === '#' + id);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = linkFor(entry.target.id);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.setAttribute('aria-current','false'));
+          link.setAttribute('aria-current','true');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0.2] });
+    sections.forEach(s => observer.observe(s));
+
+    // Contact form (Formspree or fallback mailto)
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = '';
+      const data = Object.fromEntries(new FormData(form));
+      if (!data.name || !data.email || !data.message) {
+        statusEl.textContent = 'Please fill in all fields.';
+        statusEl.style.color = 'hsl(0 84% 60%)';
+        return;
+      }
+
+      // Replace with your Formspree endpoint, e.g. https://formspree.io/f/abcd1234
+      const FORMSPREE_ENDPOINT = '';
+
+      try {
+        if (FORMSPREE_ENDPOINT) {
+          const r = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (r.ok) {
+            form.reset();
+            statusEl.textContent = 'Thanks! Your message has been sent.';
+            statusEl.style.color = 'hsl(142 72% 29%)';
+          } else {
+            throw new Error('Submission failed');
+          }
+        } else {
+          // Fallback to mailto if endpoint not set
+          const subject = encodeURIComponent('Portfolio contact from ' + data.name);
+          const body = encodeURIComponent(`${data.message}\n\nfrom: ${data.name} <${data.email}>`);
+          window.location.href = `mailto:shivakharbanda1311@gmail.com?subject=${subject}&body=${body}`;
+        }
+      } catch (err) {
+        statusEl.textContent = 'Something went wrong. Please try again or email me directly.';
+        statusEl.style.color = 'hsl(0 84% 60%)';
+      }
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
