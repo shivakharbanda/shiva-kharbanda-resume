@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiva Kharbanda - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        /* ---------- Screen (normal view) ---------- */
+        :root {
+            /* Font sizes (screen) */
+            --fs-body: 9.5pt;
+            --fs-contact: 6.6pt;
+            --fs-name: 16.4pt;
+            --fs-section: 9.2pt;
+            --fs-item-title: 9.2pt;
+            --fs-company: 8.6pt;
+            --fs-date: 8.6pt;
+            --fs-project-name: 9.4pt;
+            --fs-resp: 7.9pt;
+            --fs-tech: 7.9pt;
+
+            /* Spacing (screen) */
+            --sp-xxs: 1.6pt;
+            --sp-xs: 3.2pt;
+            --sp-s: 5pt;
+            --sp-m: 7pt;
+            --sp-l: 8.5pt;
+
+            --ink: #333;
+            --ink-subtle: #555;
+            --ink-muted: #666;
+            --brand: #2c3e50;
+            --brand-soft: #34495e;
+            --rule: #bdc3c7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.22;
+            color: var(--ink);
+            max-width: 8in;
+            margin: 0 auto;
+            padding: 0.2in;
+            background: #fff;
+            font-size: var(--fs-body);
+        }
+
+        /* Keep things compact but readable on screen */
+        .header {
+            text-align: center;
+            margin-bottom: var(--sp-m);
+            border-bottom: 1.4px solid var(--brand);
+            padding-bottom: var(--sp-xs);
+        }
+
+        .name {
+            font-size: var(--fs-name);
+            font-weight: 700;
+            color: var(--brand);
+            letter-spacing: .2px;
+            margin-bottom: var(--sp-xs);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: var(--fs-contact);
+            color: var(--ink-subtle)
+        }
+
+        .contact-info span {
+            white-space: nowrap
+        }
+
+        .contact-info a {
+            color: var(--brand);
+            text-decoration: none
+        }
+
+        .section {
+            margin-bottom: var(--sp-m)
+        }
+
+        .section-title {
+            font-size: var(--fs-section);
+            font-weight: 700;
+            color: var(--brand);
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: var(--sp-xxs);
+            margin-bottom: var(--sp-xs);
+            text-transform: uppercase;
+            letter-spacing: .35px
+        }
+
+        .experience-item,
+        .education-item,
+        .project-item {
+            margin-bottom: var(--sp-s);
+            page-break-inside: avoid
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: var(--sp-xxs);
+            gap: var(--sp-s)
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: var(--fs-item-title);
+            color: var(--brand)
+        }
+
+        .company,
+        .institution {
+            font-style: italic;
+            color: var(--ink-subtle);
+            font-size: var(--fs-company)
+        }
+
+        .date {
+            font-size: var(--fs-date);
+            color: var(--ink-muted);
+            white-space: nowrap
+        }
+
+        .project-section {
+            margin-top: var(--sp-xxs);
+            margin-left: 10px
+        }
+
+        .project-name {
+            font-weight: 700;
+            color: var(--brand-soft);
+            font-size: var(--fs-project-name);
+            margin-bottom: var(--sp-xxs)
+        }
+
+        .responsibilities {
+            margin-left: 14px;
+            margin-top: var(--sp-xxs)
+        }
+
+        .responsibilities li {
+            margin-bottom: .4pt;
+            line-height: 1.18;
+            font-size: var(--fs-resp)
+        }
+
+        .project-tech {
+            font-style: italic;
+            color: var(--ink-muted);
+            font-size: var(--fs-tech)
+        }
+
+        .project-desc {
+            font-size: var(--fs-tech);
+            color: var(--ink-subtle);
+            margin-bottom: var(--sp-xxs)
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 132px 1fr;
+            gap: 6px;
+            align-items: start
+        }
+
+        .skill-category {
+            font-weight: 700;
+            text-align: left;
+            font-size: var(--fs-tech);
+            color: var(--brand)
+        }
+
+        .skill-list {
+            color: var(--ink-subtle);
+            font-size: var(--fs-tech);
+            line-height: 1.4
+        }
+
+        /* ---------- Print (use leftover space, no second page) ---------- */
+        @page {
+            size: A4;
+            /* force A4; remove if you prefer Letter */
+            margin: 0.35in;
+            /* tighter page margins to reclaim space */
+        }
+
+        @media print {
+
+            /* Let content use full printable area */
+            html,
+            body {
+                width: auto;
+                max-width: none
+            }
+
+            body {
+                padding: 0.1in;
+                /* inner padding; page margins handle outer */
+                line-height: 1;
+                font-size: 8pt;
+                /* scale body text up for print */
+            }
+
+            /* Relax "avoid" so the last section can fill page 1 instead of jumping */
+            .section,
+            .experience-item,
+            .education-item,
+            .project-item,
+            .skills-grid {
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+
+            .section-title {
+                break-before: auto
+            }
+
+            /* Scale headings/lists up to use whitespace without spilling */
+            .name {
+                font-size: 17.2pt
+            }
+
+            .contact-info {
+                font-size: 7pt;
+                gap: 5px
+            }
+
+            .section-title {
+                font-size: 9pt
+            }
+
+            .item-title {
+                font-size: 8.8pt
+            }
+
+            .company,
+            .institution,
+            .date {
+                font-size: 8pt
+            }
+
+            .project-name {
+                font-size: 8.8pt
+            }
+
+            .responsibilities li {
+                font-size: 8.6pt;
+                line-height: 1.22
+            }
+
+            .project-tech,
+            .project-desc {
+                font-size: 8.5pt
+            }
+
+            /* Skills: keep dense but legible; widen value column a bit */
+            .skills-grid {
+                gap: 5px;
+                grid-template-columns: 128px 1fr
+            }
+
+            .skill-category,
+            .skill-list {
+                font-size: 9.5pt;
+                line-height: 1.4
+            }
+
+            /* Tighten vertical rhythm slightly to fine-tune height */
+            .section {
+                margin-bottom: 8pt
+            }
+
+            .header {
+                margin-bottom: 8pt;
+                padding-bottom: 6pt
+            }
+
+            body {
+                font-size: 9.6pt;
+            }
+
+            .responsibilities li {
+                font-size: 9.2pt;
+                line-height: 1.22;
+            }
+
+            .section-title {
+                font-size: 9.6pt;
+            }
+
+            .item-title,
+            .project-name {
+                font-size: 9.4pt;
+            }
+
+
+
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="name">Shiva Kharbanda</h1>
+        <div class="contact-info">
+            Delhi, India | <a href="mailto:shivakharbanda1311@gmail.com">shivakharbanda1311@gmail.com</a> | +91 8447903744 |
+            <a href="https://in.linkedin.com/in/shiva-kharbanda">linkedin.com/in/shiva-kharbanda</a> |
+            <a href="https://github.com/shivakharbanda/">github.com/shivakharbanda</a>
+        </div>
+    </header>
+    <section class="section">
+        <h2 class="section-title">Summary</h2>
+        <p class="summary">
+            Seasoned software engineer with 3 years of experience building
+            <b>production data pipelines</b>, <b>low-latency APIs</b>, and <b>enterprise data apps</b>
+            using <b>Databricks, FastAPI, Django, and modern cloud tooling</b>.
+            Focused on data platforms and applied AI, delivering scalable, high-impact solutions in production.
+        </p>
+    </section>
+
+
+    <section class="section">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Software Development Engineer</div>
+                    <div class="company">Scikiq</div>
+                </div>
+                <div class="date">Nov 2023 &ndash; Present</div>
+            </div>
+
+            <div class="project-section">
+                <div class="project-name">GA Call Transcripts Pipeline</div>
+                <ul class="responsibilities">
+                    <li>
+                        Automated processing of <b>6,000–8,000 call transcripts/day</b> with Databricks + Azure Data
+                        Factory, enabling intent detection, sentiment analysis, QC, and complaint checks.
+                    </li>
+                    <li>
+                        Scaled NLP inference via <b>Azure OpenAI Batch API</b> with <b>Pydantic-based validation</b> to
+                        handle high-volume workloads reliably with consistent throughput.
+                    </li>
+                    <li>
+                        Orchestrated pipelines with <b>Automic</b> and coordinated stakeholder requirements for seamless
+                        production rollout.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="project-section">
+                <div class="project-name">Master Data Management Tool</div>
+                <ul class="responsibilities">
+                    <li>Delivered a Django/DRF web app with <b>role-based access control</b>, enabling secure,
+                        multi-team usage.</li>
+                    <li>Built <b>approval workflows</b>, <b>dynamic item tracking</b>, and <b>ingestion pipelines</b>
+                        validating thousands of records with full audit trails.</li>
+                    <li>Launched <b>SLA/TAT dashboards</b> to surface bottlenecks and cycle times, helping ops leads
+                        reduce delays and improve throughput.</li>
+                </ul>
+            </div>
+
+
+            <div class="project-section">
+                <div class="project-name">Fare Rules Extraction</div>
+                <ul class="responsibilities">
+                    <li>
+                        Built a FastAPI service powered by an <b>open-source LLM deployed with vLLM</b> to ingest and
+                        validate airline fare rules from XML,
+                        cutting end-to-end parse time from <b>2–4 minutes to ~13 seconds (~95% faster)</b>
+                    </li>
+                    <li>
+                        Used async I/O to parallelize category processing; added retries and dead-letter handling for
+                        bad inputs
+                    </li>
+                    <li>
+                        Designed MongoDB schemas and Django dashboards for <b>run health, error drill-downs, and rule
+                            coverage</b>
+                    </li>
+                    <li>
+                        Onboarded <b>50+ airlines</b> (~<b>90% market coverage</b>) and shipped to production with
+                        monitoring and alerts
+                    </li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <div class="project-name">Scikiq Platform (AutoML Module)</div>
+                <ul class="responsibilities">
+                    <li>Owned the front end for an AutoML module: multi-sheet experiments, dataset/version selection,
+                        and run tracking</li>
+                    <li>Partnered with stakeholders to design workflows and acceptance criteria; wrote specs and UI
+                        prototypes</li>
+                    <li>Fixed <b>200+ bugs</b> and UX issues, reducing support tickets and improving session
+                        stability</li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Data Engineer</div>
+                    <div class="company">Daaslabs</div>
+                </div>
+                <div class="date">Nov 2022 &ndash; Oct 2023</div>
+            </div>
+
+            <div class="project-section">
+                <div class="project-name">Assessment Tool</div>
+                <ul class="responsibilities">
+                    <li>Built an enterprise data-maturity assessment app (Django, DRF, HTML/CSS/JS) with authentication
+                        and admin tooling</li>
+                    <li>Created an adaptive questionnaire engine that calibrates difficulty from prior answers to
+                        increase scoring fidelity</li>
+                </ul>
+            </div>
+
+
+            <div class="project-section">
+                <div class="project-name">ONDC (Open Network for Digital Commerce)</div>
+                <ul class="responsibilities">
+                    <li>Led a team of three to develop a Selenium-based collector for <b>50+ vendor dashboards</b>,
+                        loading results into PostgreSQL</li>
+                    <li>Productionized with Jenkins pipelines and schedules; added checkpointing and idempotent loads
+                        for consistency</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">Languages:</div>
+            <div class="skill-list">Python, JavaScript, Go (intro)</div>
+
+            <div class="skill-category">Frameworks & Libraries:</div>
+            <div class="skill-list">
+                Django, Django REST Framework, FastAPI, Flask, React, Next.js, LangChain, LangGraph, VLLM,
+                PydanticAI
+            </div>
+
+            <div class="skill-category">Data & Infrastructure:</div>
+            <div class="skill-list">
+                Databricks, Azure Data Factory, Azure Data Lake, Amazon S3, ETL/ELT, SageMaker
+            </div>
+
+            <div class="skill-category">Tools & Platforms:</div>
+            <div class="skill-list">
+                GitHub, Azure DevOps, Docker, Docker Compose, Jenkins, PostgreSQL, MySQL, MSSQL Server, MongoDB
+            </div>
+        </div>
+    </section>
+
+    <div>
+        <div>
+            <section class="section">
+                <h2 class="section-title">Personal Projects</h2>
+
+                <div class="project-item">
+                    <div class="project-name">
+                        AnalytiQ
+                        <a href="https://github.com/Data-Quotient/analytiq"
+                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[GitHub]</a>
+                    </div>
+                    <div class="project-desc">
+                        Streamlit app for data quality, preprocessing, and AutoML with GenAI assist (Streamlit, AutoML,
+                        Generative AI).
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-name">
+                        Prompt ACE
+                        <a href="https://github.com/shivakharbanda/prompt-ace"
+                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[GitHub]</a>
+                    </div>
+                    <div class="project-desc">
+                        Chrome extension for prompt versioning with secure API key storage and AI enhancements (Manifest
+                        V3, JavaScript, LangChain.js, Google Gemini).
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-name">
+                        sfinance &amp; SFinance MCP Server
+                        <a href="https://pypi.org/project/sfinance/"
+                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[PyPI]</a>
+                        <a href="https://sfinance.readthedocs.io/en/latest/"
+                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[Docs]</a>
+                        <a href="https://github.com/shivakharbanda/sfinance"
+                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[GitHub]</a>
+                        <a href="https://github.com/shivakharbanda/sfinance-mcp-server"
+                            style="font-size: 8pt; color: #3498db; text-decoration: none;">[MCP&nbsp;GitHub]</a>
+                    </div>
+                    <div class="project-desc">
+                        Published Python package on PyPI for extracting financial tables into pandas DataFrames, fully
+                        documented on ReadTheDocs, plus a separate MCP server exposing Indian stock-market data
+                        programmatically (Selenium, BeautifulSoup, Pandas, Model Context Protocol).
+                    </div>
+
+                </div>
+
+
+            </section>
+        </div>
+
+
+        <!-- Education moved here, after Personal Projects -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">BTech in Computer Science and Engineering – MDU University</div>
+                    </div>
+                    <div class="date">2018 – 2022</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
