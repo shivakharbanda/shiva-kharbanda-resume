@@ -207,7 +207,7 @@
           <a href="#experience" class="nav-link text-sm font-medium" data-nav>Experience</a>
           <a href="#projects" class="nav-link text-sm font-medium" data-nav>Projects</a>
           <a href="#skills" class="nav-link text-sm font-medium" data-nav>Skills</a>
-          <a href="#contact" class="nav-link text-sm font-medium" data-nav>Contact</a>
+          <a href="contact-us.html" class="nav-link text-sm font-medium" data-nav>Contact</a>
         </nav>
         <button id="menuButton" class="md:hidden btn btn-secondary w-10 h-10 p-0" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
@@ -222,7 +222,7 @@
           <a href="#experience" class="block mobile-link" data-nav>Experience</a>
           <a href="#projects" class="block mobile-link" data-nav>Projects</a>
           <a href="#skills" class="block mobile-link" data-nav>Skills</a>
-          <a href="#contact" class="block mobile-link" data-nav>Contact</a>
+          <a href="contact-us.html" class="block mobile-link" data-nav>Contact</a>
         </div>
       </div>
     </div>
@@ -467,7 +467,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-16">
+<!--     <section id="contact" class="py-16">
       <div class="container mx-auto px-4">
         <div class="text-center space-y-3 max-w-3xl mx-auto">
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Get in Touch</h2>
@@ -500,7 +500,7 @@
           </form>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 
   <footer class="py-8" style="border-top: 1px solid hsl(var(--border));">
@@ -571,46 +571,46 @@
     sections.forEach(s => observer.observe(s));
 
     // Contact form (Formspree or fallback mailto)
-    const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('formStatus');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = '';
-      const data = Object.fromEntries(new FormData(form));
-      if (!data.name || !data.email || !data.message) {
-        statusEl.textContent = 'Please fill in all fields.';
-        statusEl.style.color = 'hsl(0 84% 60%)';
-        return;
-      }
+    // const form = document.getElementById('contactForm');
+    // const statusEl = document.getElementById('formStatus');
+    // form.addEventListener('submit', async (e) => {
+    //   e.preventDefault();
+    //   statusEl.textContent = '';
+    //   const data = Object.fromEntries(new FormData(form));
+    //   if (!data.name || !data.email || !data.message) {
+    //     statusEl.textContent = 'Please fill in all fields.';
+    //     statusEl.style.color = 'hsl(0 84% 60%)';
+    //     return;
+    //   }
 
-      // Replace with your Formspree endpoint, e.g. https://formspree.io/f/abcd1234
-      const FORMSPREE_ENDPOINT = '';
+    //   // Replace with your Formspree endpoint, e.g. https://formspree.io/f/abcd1234
+    //   const FORMSPREE_ENDPOINT = '';
 
-      try {
-        if (FORMSPREE_ENDPOINT) {
-          const r = await fetch(FORMSPREE_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          if (r.ok) {
-            form.reset();
-            statusEl.textContent = 'Thanks! Your message has been sent.';
-            statusEl.style.color = 'hsl(142 72% 29%)';
-          } else {
-            throw new Error('Submission failed');
-          }
-        } else {
-          // Fallback to mailto if endpoint not set
-          const subject = encodeURIComponent('Portfolio contact from ' + data.name);
-          const body = encodeURIComponent(`${data.message}\n\nfrom: ${data.name} <${data.email}>`);
-          window.location.href = `mailto:shivakharbanda1311@gmail.com?subject=${subject}&body=${body}`;
-        }
-      } catch (err) {
-        statusEl.textContent = 'Something went wrong. Please try again or email me directly.';
-        statusEl.style.color = 'hsl(0 84% 60%)';
-      }
-    });
+    //   try {
+    //     if (FORMSPREE_ENDPOINT) {
+    //       const r = await fetch(FORMSPREE_ENDPOINT, {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    //         body: JSON.stringify(data)
+    //       });
+    //       if (r.ok) {
+    //         form.reset();
+    //         statusEl.textContent = 'Thanks! Your message has been sent.';
+    //         statusEl.style.color = 'hsl(142 72% 29%)';
+    //       } else {
+    //         throw new Error('Submission failed');
+    //       }
+    //     } else {
+    //       // Fallback to mailto if endpoint not set
+    //       const subject = encodeURIComponent('Portfolio contact from ' + data.name);
+    //       const body = encodeURIComponent(`${data.message}\n\nfrom: ${data.name} <${data.email}>`);
+    //       window.location.href = `mailto:shivakharbanda1311@gmail.com?subject=${subject}&body=${body}`;
+    //     }
+    //   } catch (err) {
+    //     statusEl.textContent = 'Something went wrong. Please try again or email me directly.';
+    //     statusEl.style.color = 'hsl(0 84% 60%)';
+    //   }
+    // });
 
     // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
