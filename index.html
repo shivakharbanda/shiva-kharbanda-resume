@@ -207,7 +207,8 @@
           <a href="#experience" class="nav-link text-sm font-medium" data-nav>Experience</a>
           <a href="#projects" class="nav-link text-sm font-medium" data-nav>Projects</a>
           <a href="#skills" class="nav-link text-sm font-medium" data-nav>Skills</a>
-          <a href="contact-us.html" class="nav-link text-sm font-medium" data-nav>Contact</a>
+          <a href="#contact" class="nav-link text-sm font-medium" data-nav>Contact</a>
+          <a href="https://blog.shiva.wtf/" target="_blank" rel="noopener noreferrer" class="nav-link text-sm font-medium">Blog</a>
         </nav>
         <button id="menuButton" class="md:hidden btn btn-secondary w-10 h-10 p-0" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
@@ -222,7 +223,7 @@
           <a href="#experience" class="block mobile-link" data-nav>Experience</a>
           <a href="#projects" class="block mobile-link" data-nav>Projects</a>
           <a href="#skills" class="block mobile-link" data-nav>Skills</a>
-          <a href="contact-us.html" class="block mobile-link" data-nav>Contact</a>
+          <a href="#contact" class="block mobile-link" data-nav>Contact</a>
         </div>
       </div>
     </div>
@@ -466,41 +467,164 @@
       </div>
     </section>
 
-    <!-- Contact -->
-<!--     <section id="contact" class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center space-y-3 max-w-3xl mx-auto">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Get in Touch</h2>
-          <p class="muted text-lg">Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.</p>
-        </div>
+<!-- Blog -->
+<section id="blog" class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="text-center space-y-3">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Latest from the Blog</h2>
+      <p class="muted text-lg">Fresh posts from <a href="https://blog.shiva.wtf/" target="_blank" rel="noopener noreferrer" class="brand-color underline">blog.shiva.wtf</a>.</p>
+    </div>
 
-        <div class="max-w-2xl mx-auto mt-10">
-          <form id="contactForm" class="card rounded-xl p-6 space-y-6" novalidate>
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="text-sm font-medium">Name</label>
-                <input id="name" name="name" type="text" required placeholder="Your Name" />
-              </div>
-              <div>
-                <label for="email" class="text-sm font-medium">Email</label>
-                <input id="email" name="email" type="email" required placeholder="your.email@example.com" />
-              </div>
-            </div>
-            <div>
-              <label for="message" class="text-sm font-medium">Message</label>
-              <textarea id="message" name="message" rows="6" required placeholder="Tell me a little bit about your project..."></textarea>
-            </div>
-            <div class="flex justify-center">
-              <button type="submit" class="btn btn-primary">Send Message
-                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-9.5 9.5"/><path d="M22 2 15 22l-4-8-8-4 19-8z"/></svg>
-              </button>
-            </div>
-            <p class="text-xs muted">Set your Formspree endpoint in the script below if you want submissions delivered to your inbox.</p>
-            <p id="formStatus" class="text-sm"></p>
-          </form>
+    <!-- Loading / error state -->
+    <div id="blogStatus" class="text-center muted mt-10">Loading posts…</div>
+
+    <!-- Posts grid -->
+    <div id="blogList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-8"></div>
+
+    <div class="flex justify-center mt-10">
+      <a href="https://blog.shiva.wtf/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        View all posts
+        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact -->
+<section id="contact" class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="text-center space-y-3 max-w-3xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Get in Touch</h2>
+      <p class="muted text-lg">
+        Prefer email, LinkedIn, a booking link, or a contact form? Pick what works best for you.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto mt-10 grid lg:grid-cols-3 gap-6">
+      <!-- Primary CTAs -->
+      <div class="lg:col-span-2">
+        <div class="card rounded-xl p-6 space-y-5">
+          <h3 class="text-xl font-semibold">Quick actions</h3>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              href="https://calendly.com/shivakharbanda1311"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+              aria-label="Book a call on Calendly"
+            >
+              Book a call
+              <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+            </a>
+
+            <a
+              href="mailto:shivakharbanda1311@gmail.com"
+              class="btn btn-secondary"
+              aria-label="Send an email to Shiva"
+            >
+              Email me
+              <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </a>
+          </div>
+
+          <p class="muted text-sm">
+            Typical response within 1–2 business days.
+          </p>
         </div>
       </div>
-    </section> -->
+
+      <!-- Directory -->
+      <div>
+        <div class="card rounded-xl p-6">
+          <h3 class="text-xl font-semibold mb-4">Find me</h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="mailto:shivakharbanda1311@gmail.com"
+                class="flex items-center gap-3 mobile-link"
+                aria-label="Email"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 brand-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+                <span class="truncate">shivakharbanda1311@gmail.com</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.linkedin.com/in/shiva-kharbanda"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 mobile-link"
+                aria-label="LinkedIn"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 brand-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+                </svg>
+                <span class="truncate">linkedin.com/in/shiva-kharbanda</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://calendly.com/shivakharbanda1311"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 mobile-link"
+                aria-label="Calendly"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 brand-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                <span class="truncate">calendly.com/shivakharbanda1311</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="contact-us.html"
+                class="flex items-center gap-3 mobile-link"
+                aria-label="Contact form page"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 brand-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16v16H4z"/><path d="M8 2v4M16 2v4M4 10h16"/>
+                </svg>
+                <span class="truncate">Contact form (contact-us.html)</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://blog.shiva.wtf/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 mobile-link"
+                aria-label="Blog"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 brand-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22h11A2.5 2.5 0 0 0 20 19.5v-15A2.5 2.5 0 0 0 17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15z"/>
+                  <path d="M8 7h8M8 11h8M8 15h6"/>
+                </svg>
+                <span class="truncate">blog.shiva.wtf</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
   </main>
 
   <footer class="py-8" style="border-top: 1px solid hsl(var(--border));">
@@ -615,5 +739,111 @@
     // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+  // ---- Blog feed (Blogger JSON) ----
+  (function () {
+    const FEED_URL = 'https://blog.shiva.wtf/feeds/posts/default?alt=json';
+    const MAX_POSTS = 6;
+
+    const blogList = document.getElementById('blogList');
+    const blogStatus = document.getElementById('blogStatus');
+
+    const stripHtml = (html) => {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html || '';
+      const text = tmp.textContent || tmp.innerText || '';
+      return text.replace(/\s+/g, ' ').trim();
+    };
+
+    const truncate = (txt, n = 160) => {
+      if (!txt) return '';
+      return txt.length > n ? txt.slice(0, n).trim() + '…' : txt;
+    };
+
+    const byRel = (links, rel) => (links || []).find(l => l.rel === rel);
+    const getAlternateLink = (links) => {
+      const alt = (links || []).find(l => l.rel === 'alternate' && l.type === 'text/html');
+      return alt ? alt.href : '#';
+    };
+
+    const fmtDate = (iso) => {
+      try {
+        const d = new Date(iso);
+        // Use a clear, short format; respects your India audience
+        return d.toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch {
+        return '';
+      }
+    };
+
+    const renderPostCard = (post) => {
+      const title = post.title?.$t || 'Untitled';
+      const url = getAlternateLink(post.link);
+      const published = fmtDate(post.published?.$t || post.updated?.$t);
+      const contentText = truncate(stripHtml(post.content?.$t || ''), 200);
+
+      // Optional: simple thumbnail extraction from content (first image), else fallback
+      let imgSrc = '';
+      const imgMatch = (post.content?.$t || '').match(/<img[^>]+src="([^"]+)"/i);
+      if (imgMatch && imgMatch[1]) imgSrc = imgMatch[1];
+
+      const article = document.createElement('article');
+      article.className = 'card rounded-xl p-6 flex flex-col';
+
+      article.innerHTML = `
+        ${imgSrc ? `
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="block -mt-1 -mx-1 mb-4 overflow-hidden rounded-lg">
+            <img src="${imgSrc}" alt="" class="w-full h-40 object-cover" loading="lazy" decoding="async" />
+          </a>
+        ` : ''}
+
+        <h3 class="text-2xl font-semibold">
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline">${title}</a>
+        </h3>
+        <p class="muted text-sm mt-1">${published}</p>
+        <p class="muted mt-3">${contentText}</p>
+
+        <div class="mt-auto pt-4">
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Read post
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      `;
+      return article;
+    };
+
+    const render = (entries) => {
+      blogList.innerHTML = '';
+      if (!entries || entries.length === 0) {
+        blogStatus.textContent = 'No posts yet.';
+        return;
+      }
+      blogStatus.classList.add('hidden');
+      const slice = entries.slice(0, MAX_POSTS);
+      slice.forEach(entry => blogList.appendChild(renderPostCard(entry)));
+    };
+
+    const showError = () => {
+      blogStatus.textContent = 'Could not load posts right now. Please visit the blog directly.';
+    };
+
+    // Fetch the feed and render
+    fetch(FEED_URL, { headers: { 'Accept': 'application/json' } })
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+      .then(data => {
+        const entries = data?.feed?.entry || [];
+        // Sort newest first using published or updated
+        entries.sort((a, b) => {
+          const aDate = new Date(a.published?.$t || a.updated?.$t || 0).getTime();
+          const bDate = new Date(b.published?.$t || b.updated?.$t || 0).getTime();
+          return bDate - aDate;
+        });
+        render(entries);
+      })
+      .catch(() => showError());
+  })();
+</script>
+
 </body>
 </html>
