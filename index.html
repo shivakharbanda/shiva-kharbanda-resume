@@ -740,9 +740,9 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   <script>
-  // ---- Blog feed (Blogger JSON) ----
+   // ---- Blog feed via JSONP (no CORS issues) ----
   (function () {
-    const FEED_URL = 'https://blog.shiva.wtf/feeds/posts/default?alt=json';
+    const FEED_URL = 'https://blog.shiva.wtf/feeds/posts/default?alt=json-in-script&callback=renderBloggerFeed';
     const MAX_POSTS = 6;
 
     const blogList = document.getElementById('blogList');
@@ -760,7 +760,6 @@
       return txt.length > n ? txt.slice(0, n).trim() + '…' : txt;
     };
 
-    const byRel = (links, rel) => (links || []).find(l => l.rel === rel);
     const getAlternateLink = (links) => {
       const alt = (links || []).find(l => l.rel === 'alternate' && l.type === 'text/html');
       return alt ? alt.href : '#';
@@ -769,7 +768,6 @@
     const fmtDate = (iso) => {
       try {
         const d = new Date(iso);
-        // Use a clear, short format; respects your India audience
         return d.toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
       } catch {
         return '';
@@ -782,7 +780,6 @@
       const published = fmtDate(post.published?.$t || post.updated?.$t);
       const contentText = truncate(stripHtml(post.content?.$t || ''), 200);
 
-      // Optional: simple thumbnail extraction from content (first image), else fallback
       let imgSrc = '';
       const imgMatch = (post.content?.$t || '').match(/<img[^>]+src="([^"]+)"/i);
       if (imgMatch && imgMatch[1]) imgSrc = imgMatch[1];
@@ -813,35 +810,37 @@
       return article;
     };
 
-    const render = (entries) => {
-      blogList.innerHTML = '';
-      if (!entries || entries.length === 0) {
-        blogStatus.textContent = 'No posts yet.';
-        return;
-      }
-      blogStatus.classList.add('hidden');
-      const slice = entries.slice(0, MAX_POSTS);
-      slice.forEach(entry => blogList.appendChild(renderPostCard(entry)));
-    };
-
-    const showError = () => {
-      blogStatus.textContent = 'Could not load posts right now. Please visit the blog directly.';
-    };
-
-    // Fetch the feed and render
-    fetch(FEED_URL, { headers: { 'Accept': 'application/json' } })
-      .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
-      .then(data => {
+    // Global JSONP callback (must be on window)
+    window.renderBloggerFeed = function (data) {
+      try {
         const entries = data?.feed?.entry || [];
-        // Sort newest first using published or updated
+        if (!entries.length) {
+          blogStatus.textContent = 'No posts yet.';
+          return;
+        }
+        // Newest first
         entries.sort((a, b) => {
           const aDate = new Date(a.published?.$t || a.updated?.$t || 0).getTime();
           const bDate = new Date(b.published?.$t || b.updated?.$t || 0).getTime();
           return bDate - aDate;
         });
-        render(entries);
-      })
-      .catch(() => showError());
+
+        blogList.innerHTML = '';
+        blogStatus.classList.add('hidden');
+        entries.slice(0, MAX_POSTS).forEach(entry => blogList.appendChild(renderPostCard(entry)));
+      } catch (e) {
+        blogStatus.textContent = 'Could not load posts right now. Please visit the blog directly.';
+      }
+    };
+
+    // Inject the script
+    const s = document.createElement('script');
+    s.src = FEED_URL;
+    s.async = true;
+    s.onerror = () => {
+      blogStatus.textContent = 'Could not load posts right now. Please visit the blog directly.';
+    };
+    document.head.appendChild(s);
   })();
 </script>
 
